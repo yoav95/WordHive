@@ -28,7 +28,7 @@ const storeWordObject = async (wordObject, allWords) => {
   });
 };
 
-const getWordsFromStorage = async () => {
+export const getWordsFromStorage = async () => {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(["words"], function (result) {
       if (chrome.runtime.lastError) {
@@ -39,7 +39,6 @@ const getWordsFromStorage = async () => {
         const words = result["words"];
         resolve(words);
       } else {
-        console.log("words are not in storage");
         let obj = {};
         obj["words"] = [];
         chrome.storage.sync.set(obj, function () {
@@ -64,8 +63,6 @@ export const handleUserRequest = async (selectedWordObject, tab) => {
     };
     console.log(wordObject);
     const allwords = await getWordsFromStorage();
-    console.log("all words: ", allwords);
     await storeWordObject(wordObject, allwords);
-    console.log("finished");
   }
 };

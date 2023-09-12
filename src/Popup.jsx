@@ -1,21 +1,11 @@
 import React, { useEffect } from "react";
-import { render } from "react-dom";
-import Word from "./components/Word.jsx";
+import App from "./App.jsx";
+import { createRoot } from "react-dom/client";
 import "./styles.css";
 
 // for developing live
 // chrome-extension://ebgphmifkdddclkolclgekikgfbcgene/popup.html
+const rootElem = document.getElementById("react-target");
+const root = createRoot(rootElem);
 
-const Popup = () => {
-  return (
-    <div className="grid">
-      <Word />
-      <Word />
-      <Word />
-      <Word />
-      <Word />
-    </div>
-  );
-};
-
-render(<Popup />, document.getElementById("react-target"));
+root.render(<App />);
