@@ -1,0 +1,22 @@
+{
+  "name": "WordHive",
+  "description": "Practice english words",
+  "version": "1.0",
+  "permissions": ["storage", "tabs", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
+}
