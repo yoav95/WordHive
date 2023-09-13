@@ -2,7 +2,7 @@
   "name": "WordHive",
   "description": "Practice english words",
   "version": "1.0",
-  "permissions": ["storage", "tabs", "contextMenus"],
+  "permissions": ["storage", "tabs", "contextMenus", "unlimitedStorage"],
   "host_permissions": ["<all_urls>"],
 
   "web_accessible_resources": [

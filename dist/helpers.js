@@ -21,7 +21,7 @@ const storeWordObject = async (wordObject, allWords) => {
     allWords.push(wordObject);
     let obj = {};
     obj["words"] = allWords;
-    chrome.storage.sync.set(obj, function () {
+    chrome.storage.local.set(obj, function () {
       console.log("saved!");
       resolve(true);
     });
@@ -30,7 +30,7 @@ const storeWordObject = async (wordObject, allWords) => {
 
 export const getWordsFromStorage = async () => {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.get(["words"], function (result) {
+    chrome.storage.local.get(["words"], function (result) {
       if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError);
         reject(chrome.runtime.lastError);
@@ -42,7 +42,7 @@ export const getWordsFromStorage = async () => {
       } else {
         let obj = {};
         obj["words"] = [];
-        chrome.storage.sync.set(obj, function () {
+        chrome.storage.local.set(obj, function () {
           resolve([]);
         });
       }
