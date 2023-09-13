@@ -37,6 +37,7 @@ export const getWordsFromStorage = async () => {
       }
       if ("words" in result) {
         const words = result["words"];
+        console.log("woords:", words);
         resolve(words);
       } else {
         let obj = {};
