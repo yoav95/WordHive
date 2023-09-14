@@ -1,8 +1,21 @@
 .word {
+  position: relative;
   background-color: #2243b6;
   width: 100%;
   height: 100%;
   padding: 1rem;
   color: white;
   border-radius: 1rem;
+  border: 6px solid #f49d37;
+}
+.btns {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 1rem;
+}
+.marked {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1rem;
 }

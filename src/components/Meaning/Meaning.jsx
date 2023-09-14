@@ -20,11 +20,13 @@ const Meaning = ({ meanings }) => {
         <p>Part Of Speech: {currentMeaning.partOfSpeech}</p>
         <div className={styles.list}>
           {currentMeaning.definitions.map((definition, index) => (
-            <div className={styles.definition}>
-              <span>
-                <FaRegCircleDot />
-              </span>
-              <p className={styles.text}>{definition.definition}</p>
+            <div className={styles.definition} key={Math.random()}>
+              <p className={styles.text}>
+                <span style={{ marginRight: "1rem" }}>
+                  <FaRegCircleDot />
+                </span>
+                {definition.definition}
+              </p>
               {definition.example && (
                 <p className={styles.example}>Example: {definition.example}</p>
               )}
@@ -32,7 +34,13 @@ const Meaning = ({ meanings }) => {
           ))}
         </div>
       </div>
-      {meanings.length > 1 && <Button>See Diffrent Meaning</Button>}
+      {meanings.length > 1 && (
+        <div style={{ marginTop: "1rem" }}>
+          <Button size="md" action={changeMeaning}>
+            See Diffrent Meaning
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

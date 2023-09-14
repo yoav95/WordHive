@@ -54,7 +54,6 @@ export const getWordsFromStorage = async () => {
       }
       if ("words" in result) {
         const words = result["words"];
-        console.log("woords:", words);
         resolve(words);
       } else {
         let obj = {};
@@ -78,8 +77,8 @@ export const handleUserRequest = async (selectedWordObject, tab) => {
       definition,
       id: Math.random(),
       timestamp: Date.now(),
+      marked: false,
     };
-    console.log(wordObject);
     const allwords = await getWordsFromStorage();
     await storeWordObject(wordObject, allwords);
   }
@@ -96,4 +95,17 @@ export const formatTimestamp = (timestamp) => {
   const minutes = String(date.getMinutes()).padStart(2, "0");
 
   return `${day}/${month}/${year} ${hours}:${minutes}`;
+};
+
+export const markWord = async (wordId) => {
+  return new Promise(async (resolve, reject) => {
+    const words = await getWordsFromStorage();
+    const wordToUpdate = words.find((word) => word.id === wordId);
+    wordToUpdate.marked = !wordToUpdate.marked;
+    let obj = {};
+    obj["words"] = words;
+    chrome.storage.local.set(obj, function () {
+      resolve(true);
+    });
+  });
 };

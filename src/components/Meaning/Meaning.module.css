@@ -4,8 +4,12 @@
 }
 .definition {
   width: 90%;
+  background-color: #3f60d7;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 .list {
+  margin-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -14,7 +18,7 @@
   overflow-y: auto;
 }
 .text {
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 600;
 }
 

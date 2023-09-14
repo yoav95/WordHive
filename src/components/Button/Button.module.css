@@ -1,10 +1,25 @@
 .btn {
-  padding: 0.4rem 0.8rem;
   background-color: #f49d37;
   border: none;
   border-radius: 0.5rem;
-
   color: #2243b6;
-  font-weight: 600;
   cursor: pointer;
+  border: 2px solid #f49d37;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn.sm {
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+  font-weight: 600;
+}
+.btn.md {
+  padding: 0.4rem 0.8rem;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #2243b6;
+  color: white;
+  border: 2px solid white;
 }
