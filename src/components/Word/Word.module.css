@@ -1,0 +1,8 @@
+.word {
+  background-color: #2243b6;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  color: white;
+  border-radius: 1rem;
+}

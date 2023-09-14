@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { getWordsFromStorage } from "../public/helpers";
-import Word from "./components/Word.jsx";
-
+import styles from "./App.module.css";
+import Word from "./components/Word/Word.jsx";
 const App = () => {
   const [words, setWords] = useState(null);
   useEffect(() => {
     const x = async () => {
       const allWords = await getWordsFromStorage();
-      setWords(allWords);
+      const foramttedWords = allWords.map((word) => {
+        return {
+          word: word.text,
+          timestamp: word.timestamp,
+          data: word.definition,
+        };
+      });
+      setWords(foramttedWords);
     };
     x();
   }, []);
+
   return (
-    <div className="grid">
-      {words && words.map((word) => <Word key={word.id} {...word} />)}
+    <div className={styles.grid}>
+      {words && words.map((word) => <Word {...word} />)}
     </div>
   );
 };
