@@ -4,10 +4,9 @@ import styles from "./App.module.css";
 import Word from "./components/Word/Word.jsx";
 const App = () => {
   const [words, setWords] = useState(null);
-  const [rerender, setRerender] = useState(false);
+  const [rerender, setRerender] = useState(0);
   const triggerRerender = () => {
-    alert("rerender");
-    setRerender((prev) => !prev);
+    setRerender((prev) => prev + 1);
   };
   useEffect(() => {
     const x = async () => {
@@ -22,6 +21,9 @@ const App = () => {
         };
       });
       setWords(foramttedWords);
+      if (!window.trigerNewRender) {
+        window.triggerNewRender = triggerRerender;
+      }
     };
     x();
   }, [rerender]);

@@ -6,12 +6,12 @@
   cursor: pointer;
   border: 2px solid #f49d37;
   transition: all 0.3s ease-in-out;
+  font-weight: 600;
 }
 
 .btn.sm {
   padding: 0.1rem 0.5rem;
   font-size: 12px;
-  font-weight: 600;
 }
 .btn.md {
   padding: 0.4rem 0.8rem;

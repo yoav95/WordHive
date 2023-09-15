@@ -12,16 +12,14 @@ const Word = ({ word, timestamp, data, id, onUpdate, marked }) => {
   // there are more objects in the array, but for now i choose one.
   const meanings = data[0].meanings;
   const handleMarkWord = async () => {
-    alert("marking");
-    const success = markWord(id);
+    const success = await markWord(id);
     if (success) {
       onUpdate();
     }
   };
-  const handleRemove = () => {
-    const success = removeSingleWordFromStorage(id);
+  const handleRemove = async () => {
+    const success = await removeSingleWordFromStorage(id);
     if (success) {
-      alert("word was removed");
       onUpdate();
     } else {
       alert("failed to remove");

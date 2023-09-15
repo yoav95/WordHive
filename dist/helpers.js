@@ -67,6 +67,7 @@ export const getWordsFromStorage = async () => {
 };
 
 export const handleUserRequest = async (selectedWordObject, tab) => {
+  console.log(selectedWordObject);
   const selectedWord = selectedWordObject.selectionText;
   const definition = await fetchDefinitions(selectedWord);
   if (!definition) {

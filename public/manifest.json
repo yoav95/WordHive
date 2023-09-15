@@ -13,7 +13,10 @@
   ],
   "manifest_version": 3,
   "action": {
-    "default_popup": "popup.html"
+    "default_icon": {
+      "32": "icon.png"
+    },
+    "default_title": "click me"
   },
   "background": {
     "service_worker": "background.js",

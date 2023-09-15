@@ -7,4 +7,10 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+// for handling user mark word on webpage
 chrome.contextMenus.onClicked.addListener(handleUserRequest);
+
+// for handling click on the extension icon (=> new tab with popup.jsx)
+chrome.action.onClicked.addListener(function () {
+  chrome.tabs.create({ url: "popup.html" });
+});
