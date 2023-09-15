@@ -66,6 +66,17 @@ export const getWordsFromStorage = async () => {
   });
 };
 
+export const getRandomWordFromStorage = async () => {
+  const words = await getWordsFromStorage();
+  const length = words.length;
+  const randomIndex = Math.floor(Math.random() * length);
+  if (words[randomIndex]) {
+    return words[randomIndex];
+  } else {
+    return null;
+  }
+};
+
 export const handleUserRequest = async (selectedWordObject, tab) => {
   console.log(selectedWordObject);
   const selectedWord = selectedWordObject.selectionText;

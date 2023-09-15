@@ -2,7 +2,13 @@
   "name": "WordHive",
   "description": "Practice english words",
   "version": "1.0",
-  "permissions": ["storage", "tabs", "contextMenus", "unlimitedStorage"],
+  "permissions": [
+    "storage",
+    "tabs",
+    "contextMenus",
+    "unlimitedStorage",
+    "activeTab"
+  ],
   "host_permissions": ["<all_urls>"],
 
   "web_accessible_resources": [
@@ -21,5 +27,11 @@
   "background": {
     "service_worker": "background.js",
     "type": "module"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["injector.js"]
+    }
+  ]
 }

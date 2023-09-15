@@ -13,7 +13,7 @@ const Meaning = ({ meanings }) => {
       return (prev + 1) % meanings.length;
     });
   };
-  console.log(currentIndex, currentMeaning);
+  console.log(meanings);
   return (
     <div className={styles.meaning}>
       <div>
@@ -33,6 +33,16 @@ const Meaning = ({ meanings }) => {
             </div>
           ))}
         </div>
+        {currentMeaning.synonyms.length > 0 && (
+          <>
+            <h3 style={{ marginTop: "1rem" }}>Synonyms</h3>
+            <div className={styles.synonyms}>
+              {currentMeaning.synonyms.map((synonym) => (
+                <p>{synonym}</p>
+              ))}
+            </div>
+          </>
+        )}
       </div>
       {meanings.length > 1 && (
         <div style={{ marginTop: "1rem" }}>
