@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: {
-    popup: "./src/popup.jsx",
+    popup: "./src/Popup.jsx",
+    lizard: "./src/Lizard.jsx",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -32,6 +33,7 @@ module.exports = {
       template: "./src/popup.html",
       filename: "popup.html",
     }),
+
     new CopyPlugin({
       patterns: [{ from: "public" }],
     }),

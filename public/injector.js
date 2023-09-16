@@ -32,8 +32,6 @@ const getRandomWordFromStorage = async () => {
   });
 };
 
-const body = document.body;
-
 const triggerInjection = () => {
   var randomNumber = Math.random();
   return randomNumber < 0.5;
@@ -44,6 +42,20 @@ const createAndInjectElement = async () => {
   const randomWord = await getRandomWordFromStorage();
   if (randomWord) {
     console.log(randomWord);
+    sessionStorage.setItem("wordObject", JSON.stringify(randomWord));
+
+    try {
+      document.body.style.position = "relative";
+      const div = document.createElement("div");
+      div.id = "react-anchor";
+      const script = document.createElement("script");
+      script.src =
+        "chrome-extension://ebgphmifkdddclkolclgekikgfbcgene/lizard.js";
+      document.body.appendChild(div);
+      document.body.appendChild(script);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
