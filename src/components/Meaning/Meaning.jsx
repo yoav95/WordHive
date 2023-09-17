@@ -13,7 +13,6 @@ const Meaning = ({ meanings }) => {
       return (prev + 1) % meanings.length;
     });
   };
-  console.log(meanings);
   return (
     <div className={styles.meaning}>
       <div>

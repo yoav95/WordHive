@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ReactDOM } from "react";
 import styles from "./Word.module.css";
 import PopUpMeaning from "./PopUpMeaning.jsx";
 import Button from "../Button/Button.jsx";
@@ -6,39 +7,42 @@ import {
   formatTimestamp,
   removeSingleWordFromStorage,
   markWord,
-} from "../../../public/helpers";
+} from "../../../public/helpers.js";
 import { FaCrown } from "react-icons/fa6";
 import { unmountComponentAtNode } from "react-dom";
 const PopUpWord = ({ word, timestamp, data, id, onUpdate, marked }) => {
-  const [show, setShow] = useState(true);
-  // there are more objects in the array, but for now i choose one.
-  const meanings = data[0].meanings;
-  const unMountComponent = () => {
-    setShow(false);
+  const [showComponent, setShowComponent] = useState(true);
+  const addedDate = formatTimestamp(timestamp);
+
+  const sendRemoveMessage = (event) => {
+    event.stopPropagation();
+    window.postMessage({ from: "WORD", action: "REMOVE", payload: id }, "*");
+    setShowComponent(false);
   };
-  const handleMarkWord = async () => {
-    const success = await markWord(id);
-    if (success) {
-      onUpdate();
-    }
+
+  const sendMarkMessage = (event) => {
+    event.stopPropagation();
+    window.postMessage({ from: "WORD", action: "MARK", payload: id }, "*");
+    setShowComponent(false);
   };
-  const handleRemove = async () => {
-    const success = await removeSingleWordFromStorage(id);
-    if (success) {
-      onUpdate();
-    } else {
-      alert("failed to remove");
-    }
-  };
+
   return (
     <>
-      {show && (
-        <div className={styles.word} onClick={unMountComponent}>
+      {showComponent && (
+        <div className={styles.word} onClick={() => setShowComponent(false)}>
           <div className={styles.control}>
-            <p>added on {formatTimestamp(new Date(timestamp))}</p>
+            <Button action={sendRemoveMessage} size="sm">
+              Remove
+            </Button>
+            <Button action={sendMarkMessage} size="sm">
+              Mark
+            </Button>
+            <p className={styles.date}>Added on {addedDate}</p>
           </div>
-          <h1 style={{ marginTop: "1rem" }}>{word}</h1>
-          <PopUpMeaning meanings={meanings} />
+          <div className={styles.theword}>{word}</div>
+          <div>
+            <PopUpMeaning meanings={data[0].meanings} />
+          </div>
         </div>
       )}
     </>

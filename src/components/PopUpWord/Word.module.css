@@ -1,22 +1,35 @@
 .word {
-  position: relative;
+  cursor: pointer;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 400px;
+  grid-template-rows: 50px 80px 270px;
   background-color: #2243b6;
+  position: fixed;
+  top: calc(50vh - 200px);
+  left: calc(50vw - 200px);
+  z-index: 1000;
+}
+.theword {
   width: 100%;
   height: 100%;
-  padding: 2rem;
-  cursor: pointer;
   color: white;
-  border-radius: 1rem;
-  border: 6px solid #f49d37;
-}
-.btns {
-  margin-top: 0.4rem;
+  font-weight: 700;
+  font-size: 2rem;
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
-.marked {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 1rem;
+.control {
+  padding: 0 1rem;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  display: flex;
+}
+.date {
+  font-size: 0.6rem;
+  color: white;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styles from "./Word.module.css";
 import Meaning from "../Meaning/Meaning.jsx";
 import Button from "../Button/Button.jsx";
@@ -11,6 +11,7 @@ import { FaCrown } from "react-icons/fa6";
 const Word = ({ word, timestamp, data, id, onUpdate, marked }) => {
   // there are more objects in the array, but for now i choose one.
   const meanings = data[0].meanings;
+
   const handleMarkWord = async () => {
     const success = await markWord(id);
     if (success) {

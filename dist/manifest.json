@@ -7,12 +7,17 @@
     "tabs",
     "contextMenus",
     "unlimitedStorage",
-    "activeTab"
+    "activeTab",
+    "nativeMessaging"
   ],
   "host_permissions": ["<all_urls>"],
   "web_accessible_resources": [
     {
       "resources": ["lizard.js"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["utils.js"],
       "matches": ["<all_urls>"]
     }
   ],
