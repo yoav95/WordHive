@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getWordsFromStorage } from "../public/helpers";
 import styles from "./App.module.css";
 import Word from "./components/Word/Word.jsx";
+import Container from "./components/UI/Container.jsx";
+import Navbar from "./components/UI/Navbar.jsx";
 const App = () => {
   const [words, setWords] = useState(null);
   const [rerender, setRerender] = useState(0);
@@ -28,12 +30,17 @@ const App = () => {
     x();
   }, [rerender]);
   return (
-    <div className={styles.grid}>
-      {words &&
-        words.map((word) => (
-          <Word key={word.id} {...word} onUpdate={triggerRerender} />
-        ))}
-    </div>
+    <>
+      <Navbar />
+      <Container>
+        <div className={styles.grid}>
+          {words &&
+            words.map((word) => (
+              <Word key={word.id} {...word} onUpdate={triggerRerender} />
+            ))}
+        </div>
+      </Container>
+    </>
   );
 };
 

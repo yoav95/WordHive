@@ -17,19 +17,47 @@
   font-weight: 700;
   font-size: 2rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
+}
+.theword h1 {
+  font-size: 2rem;
+}
+.audiobtn {
+  background-color: #f49d37 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2243b6;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.audiobtn:hover {
+  background-color: #2243b6 !important;
+  color: #f49d37;
+  border: 1px solid #f49d37;
 }
 .control {
   padding: 0 1rem;
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   display: flex;
 }
 .date {
   font-size: 0.6rem;
   color: white;
+}
+.box {
+  display: flex;
+  gap: 1rem;
+}
+.audiobtn {
+  background-color: antiquewhite;
 }

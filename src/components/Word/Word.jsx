@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Word.module.css";
 import Meaning from "../Meaning/Meaning.jsx";
 import Button from "../Button/Button.jsx";
+import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import {
   formatTimestamp,
   removeSingleWordFromStorage,
@@ -9,8 +10,14 @@ import {
 } from "../../../public/helpers";
 import { FaCrown } from "react-icons/fa6";
 const Word = ({ word, timestamp, data, id, onUpdate, marked }) => {
+  const audioRef = useRef();
   // there are more objects in the array, but for now i choose one.
   const meanings = data[0].meanings;
+
+  useEffect(() => {
+    // implementing animation
+    console.log(audioRef);
+  }, []);
 
   const handleMarkWord = async () => {
     const success = await markWord(id);
@@ -26,8 +33,26 @@ const Word = ({ word, timestamp, data, id, onUpdate, marked }) => {
       alert("failed to remove");
     }
   };
+  const getAudioUrl = () => {
+    if (data[0].phonetics.length === 0) {
+      return null;
+    }
+    for (let i = 0; i < data[0].phonetics.length; i++) {
+      let str = data[0].phonetics[i].audio;
+      if (str.startsWith("https://")) {
+        return str;
+      }
+    }
+  };
+  const playAudio = () => {
+    audioRef.current.play();
+  };
+
+  const audioUrl = getAudioUrl();
+
   return (
     <div className={styles.word}>
+      <audio ref={audioRef} src={audioUrl}></audio>
       {marked && (
         <div className={styles.marked}>
           <FaCrown size={32} color="#f49d37" />
@@ -44,7 +69,15 @@ const Word = ({ word, timestamp, data, id, onUpdate, marked }) => {
           </Button>
         </div>
       </div>
-      <h1 style={{ marginTop: "1rem" }}>{word}</h1>
+      <div className={styles.theword}>
+        {audioUrl && (
+          <div onClick={playAudio}>
+            <HiOutlineSpeakerWave size={20} />
+          </div>
+        )}
+        <h1>{word}</h1>
+      </div>
+
       <Meaning meanings={meanings} />
     </div>
   );

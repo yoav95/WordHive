@@ -1,5 +1,5 @@
 .meaning {
-  width: 100%;
+  max-width: 100%;
   margin-top: 1rem;
 }
 .definition {
@@ -43,6 +43,8 @@
   margin-top: 0.5rem;
   display: flex;
   gap: 1rem;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 .synonyms p {
   padding: 0.4rem 0.6rem;

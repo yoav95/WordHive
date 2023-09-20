@@ -5,6 +5,7 @@ import Button from "../Button/Button.jsx";
 const Meaning = ({ meanings }) => {
   const [currentMeaning, setCurrentMeaning] = useState(meanings[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const slicedSynonims = currentMeaning.synonyms.slice(0, 5);
   useEffect(() => {
     setCurrentMeaning(meanings[currentIndex]);
   }, [currentIndex]);
@@ -36,7 +37,7 @@ const Meaning = ({ meanings }) => {
           <>
             <h3 style={{ marginTop: "1rem" }}>Synonyms</h3>
             <div className={styles.synonyms}>
-              {currentMeaning.synonyms.map((synonym) => (
+              {slicedSynonims.map((synonym) => (
                 <p>{synonym}</p>
               ))}
             </div>

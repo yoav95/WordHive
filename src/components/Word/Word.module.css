@@ -1,7 +1,6 @@
 .word {
   position: relative;
   background-color: #2243b6;
-  width: 100%;
   height: 100%;
   padding: 1rem;
   color: white;
@@ -18,4 +17,34 @@
   right: 0;
   top: 0;
   margin: 1rem;
+}
+
+.theword {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.theword div {
+  width: 32px;
+  height: 32px;
+  background-color: #f49d37;
+  border-radius: 50%;
+  color: #2243b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #f49d37;
+  transition: all 0.2s ease;
+}
+
+.theword div:hover {
+  color: #f49d37;
+  background-color: #2243b6;
+  border: 1px solid #f49d37;
 }

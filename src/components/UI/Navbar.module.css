@@ -1,0 +1,21 @@
+.header {
+  background-color: #2243b6;
+}
+.nav {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.logo {
+  position: relative;
+  z-index: 200;
+  width: auto;
+  width: 200px;
+}
