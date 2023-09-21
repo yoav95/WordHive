@@ -12,7 +12,11 @@ const Navbar = () => {
             <img src={logo} />
           </div>
           <ul className={styles.list}>
-            <Button size="md">Practice</Button>
+            <Button size="md">
+              <a href="chrome-extension://ebgphmifkdddclkolclgekikgfbcgene/game.html">
+                Practice
+              </a>
+            </Button>
           </ul>
         </nav>
       </Container>

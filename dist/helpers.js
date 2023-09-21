@@ -121,3 +121,25 @@ export const markWord = async (wordId) => {
     });
   });
 };
+
+export const getQuestion = async () => {
+  const randomWord = await getRandomWordFromStorage();
+  const words = await getWordsFromStorage();
+  if (words.length < 3) {
+    return null;
+  }
+  const filteredWords = words.filter((word) => word.id !== randomWord.id);
+  const index1 = Math.floor(Math.random() * filteredWords.length);
+  let index2 = (index1 + 1) % filteredWords.length;
+
+  return {
+    word: randomWord.text,
+    options: {
+      one: filteredWords[index1],
+      two: filteredWords[index2],
+      answer: randomWord,
+    },
+  };
+  // now get two other words from storage
+  // return and object {word:x, options:[1,2,3]}
+};

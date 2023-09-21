@@ -1,0 +1,24 @@
+.wrapper {
+  background-color: #2243b6;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  padding: 1rem 2rem;
+  background-color: #f49d37;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 1rem;
+  color: #2243b6;
+  border: 2px solid #f49d37;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+}

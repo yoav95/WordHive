@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     popup: "./src/Popup.jsx",
     lizard: "./src/Lizard.jsx",
+    game: "./src/game.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -43,6 +44,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/popup.html",
       filename: "popup.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/game.html",
+      filename: "game.html",
     }),
 
     new CopyPlugin({

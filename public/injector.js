@@ -1,3 +1,8 @@
+window.onload = () => {
+  const gameUrl = chrome.runtime.getURL("game.html");
+  console.log(gameUrl);
+};
+
 const markWord = async (wordId) => {
   return new Promise(async (resolve, reject) => {
     const words = await getWordsFromStorage();
@@ -101,8 +106,7 @@ const createAndInjectElement = async () => {
       const div = document.createElement("div");
       div.id = "react-anchor";
       const script = document.createElement("script");
-      script.src =
-        "chrome-extension://ebgphmifkdddclkolclgekikgfbcgene/lizard.js";
+      script.src = scriptSrc;
       document.body.appendChild(div);
       document.body.appendChild(script);
     } catch (error) {
