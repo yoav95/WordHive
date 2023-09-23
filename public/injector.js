@@ -96,6 +96,8 @@ const triggerInjection = () => {
 
 const createAndInjectElement = async () => {
   const div = document.createElement("div");
+  const scriptSrc = chrome.runtime.getURL("lizard.js");
+  console.log(scriptSrc);
   const randomWord = await getRandomWordFromStorage();
   if (randomWord) {
     console.log(randomWord);
@@ -107,6 +109,7 @@ const createAndInjectElement = async () => {
       div.id = "react-anchor";
       const script = document.createElement("script");
       script.src = scriptSrc;
+      console.log(scriptSrc);
       document.body.appendChild(div);
       document.body.appendChild(script);
     } catch (error) {
@@ -116,5 +119,6 @@ const createAndInjectElement = async () => {
 };
 
 if (triggerInjection()) {
+  console.log("fuck");
   createAndInjectElement();
 }
